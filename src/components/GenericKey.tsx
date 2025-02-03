@@ -1,0 +1,29 @@
+import {ReactNode, useEffect, useState} from "react";
+import {cn} from "@/lib/utils";
+import {Player} from "soundfont-player";
+import * as Soundfont from "soundfont-player";
+import {getAudioContext} from "@/lib/audio";
+
+
+
+
+export default function GenericKey({note, octave=4, className, children}: {note : string, octave : number, className : string, children : ReactNode}) {
+    const [instrument, setInstrument] = useState<Player>();
+    useEffect(() => {
+        Soundfont.instrument(getAudioContext(), 'bottle', {}).then(function (bottle) {
+            setInstrument(bottle);
+        })
+    }, [])
+    const onClick = () => {
+        instrument?.start(note.toUpperCase()+octave, undefined, {sustain: 3, decay: 2})
+    }
+    const onRelease = () => {
+        instrument?.stop(getAudioContext()?.currentTime + 0.05)
+    }
+    return (
+        <div>
+            <div className={cn(className)} onMouseDown={onClick} onMouseUp={onRelease} onMouseLeave={onRelease}>{children}</div>
+
+        </div>
+    )
+}
