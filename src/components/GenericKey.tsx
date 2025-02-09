@@ -10,7 +10,7 @@ import {getAudioContext} from "@/lib/audio";
 export default function GenericKey({note, octave=4, className, children}: {note : string, octave : number, className : string, children : ReactNode}) {
     const [instrument, setInstrument] = useState<Player>();
     useEffect(() => {
-        Soundfont.instrument(getAudioContext(), 'bottle', {}).then(function (bottle) {
+        Soundfont.instrument(getAudioContext(), "acoustic_grand_piano", {nameToUrl: () => "/soundfont/acoustic_grand_piano-mp3.js"}).then(function (bottle) {
             setInstrument(bottle);
         })
     }, [])
