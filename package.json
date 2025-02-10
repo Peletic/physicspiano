@@ -9,12 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-slider": "^1.2.3",
+    "audio-loader": "^1.0.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.474.0",
     "next": "15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "sample-player": "^0.5.5",
     "smplr": "^0.16.1",
     "soundfont-player": "^0.12.0",
     "soundfont2": "^0.5.0",

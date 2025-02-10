@@ -1,8 +1,15 @@
 'use client'
 import {fullOctave} from "@/lib/audio";
 import Key from "@/components/Key";
+import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
+import {Slider} from "@/components/ui/slider";
+import {useEffect, useState} from "react";
 
 export default function Home() {
+    const [octaves, setOctaves] = useState<number>(0)
+    useEffect(() => {
+        console.log(octaves)
+    }, [octaves])
     return (
         <div
             className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
@@ -10,8 +17,34 @@ export default function Home() {
                 Test
             </header>
             <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-                <div className={"grid grid-rows-1 grid-flow-col min-w-fit flex-nowrap "}>
-                    { ...fullOctave.map((el) => (<Key key={`${el+"4"}`} note={el} octave={4} className={"row-end-1"}/>))}
+                <div className={"grid grid-rows-1 grid-flow-col min-w-fit flex-nowrap mx-auto"}>
+                    {...Array(octaves + 1).fill(fullOctave).flat().map((el, idx) => (
+                        <Key key={`${idx}`} note={el} octave={4 - octaves/2 + Math.floor(idx/12)} className={"row-end-1"}/>))}
+                </div>
+                <div className={"flex flex-row items-center min-w-full justify-between mx-auto"}>
+                    <Card className={"w-full sm:max-w-[40vw] md:max-w-[17vw] mx-2"}>
+                        <CardHeader>
+                            <CardTitle>
+                                About
+                            </CardTitle>
+                            <CardDescription>
+                                More about this webpage&#39;s development.
+                            </CardDescription>
+                        </CardHeader>
+                    </Card>
+                    <Card className={"w-full sm:max-w-[40vw] md:max-w-[17vw] mx-2"}>
+                        <CardHeader>
+                            <CardTitle className={"w-full"}>
+                                Octaves
+                            </CardTitle>
+                            <CardDescription className={""}>
+                                How many octaves should the virtual keyboard have?
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent className={"w-full"}>
+                            <Slider title={"Keys"} defaultValue={[0]} max={6} step={2} className={"w-full"} onValueChange={(val) => {setOctaves(val[0])}}/>
+                        </CardContent>
+                    </Card>
                 </div>
             </main>
         </div>
