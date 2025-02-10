@@ -20,6 +20,7 @@ export default function Home() {
                 <div className={"grid grid-rows-1 grid-flow-col min-w-fit flex-nowrap mx-auto"}>
                     {...Array(octaves + 1).fill(fullOctave).flat().map((el, idx) => (
                         <Key key={`${idx}`} note={el} octave={4 - octaves/2 + Math.floor(idx/12)} className={"row-end-1"}/>))}
+                    <Key note={"c"} octave={octaves + 5} className={"row-end-1"}/>
                 </div>
                 <div className={"flex flex-row items-center min-w-full justify-between mx-auto"}>
                     <Card className={"w-full sm:max-w-[40vw] md:max-w-[17vw] mx-2"}>
@@ -42,7 +43,7 @@ export default function Home() {
                             </CardDescription>
                         </CardHeader>
                         <CardContent className={"w-full"}>
-                            <Slider title={"Keys"} defaultValue={[0]} max={6} step={2} className={"w-full"} onValueChange={(val) => {setOctaves(val[0])}}/>
+                            <Slider title={"Keys"} defaultValue={[0]} max={6} step={2} className={"w-full"} onValueChange={async (val) => {setOctaves(val[0])}}/>
                         </CardContent>
                     </Card>
                 </div>
