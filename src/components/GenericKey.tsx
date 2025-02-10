@@ -10,11 +10,18 @@ import {getAudioContext} from "@/lib/audio";
 export default function GenericKey({note, octave=4, className, children}: {note : string, octave : number, className : string, children : ReactNode}) {
     const [instrument, setInstrument] = useState<Player>();
     useEffect(() => {
-        Soundfont.instrument(getAudioContext(), "acoustic_grand_piano", {nameToUrl: () => "/soundfont/acoustic_grand_piano-mp3.js"}).then(function (bottle) {
-            setInstrument(bottle);
-        })
+        initInstrument()
     }, [])
+    const initInstrument = () => {
+        Soundfont.instrument(getAudioContext(), "acoustic_grand_piano", {nameToUrl: () => "/soundfont/acoustic_grand_piano-mp3.js"}).then(function (player) {
+            console.log(`Creating ${note}:${octave}.`)
+            setInstrument(player);
+        })
+    }
     const onClick = () => {
+        if (instrument === undefined) {
+            initInstrument()
+        }
         instrument?.start(note.toUpperCase()+octave, undefined, {sustain: 3, decay: 2})
     }
     const onRelease = () => {
