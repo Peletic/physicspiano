@@ -20,7 +20,7 @@ export default function Home() {
             <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
                 <div className={"grid grid-rows-1 grid-flow-col min-w-fit flex-nowrap mx-auto"}>
                     {...Array(octaves + 1).fill(fullOctave).flat().map((el, idx) => (
-                        <Key key={`${el}${4 - octaves/2 + Math.floor(idx/12}`} note={el} octave={4 - octaves/2 + Math.floor(idx/12)} className={"row-end-1"}/>))}
+                        <Key key={`${el}${4 - octaves/2 + Math.floor(idx/12)}`} note={el} octave={4 - octaves/2 + Math.floor(idx/12)} className={"row-end-1"}/>))}
                     <Key note={"c"} octave={4 + octaves/2 + 1} className={"row-end-1"}/>
                 </div>
                 <div className={"flex flex-row items-center min-w-full justify-between mx-auto"}>
