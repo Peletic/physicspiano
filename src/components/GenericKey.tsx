@@ -1,6 +1,6 @@
 import {ReactNode, useEffect, useState} from "react";
 import {cn} from "@/lib/utils";
-import {decoder, getAudioContext, getSoundFont} from "@/lib/audio";
+import {getAudioContext, loadInstrument} from "@/lib/audio";
 
 export default function GenericKey({note, octave = 4, className, children}: {
     note: string,
@@ -8,23 +8,17 @@ export default function GenericKey({note, octave = 4, className, children}: {
     className: string,
     children: ReactNode
 }) {
-    const [instrument, setInstrument] = useState();
+    const [instrument, setInstrument] = useState<any>();
     useEffect(() => {
-        initInstrument()
+        console.log(`Creating ${note}:${octave}.`)
+        loadInstrument().then(res => setInstrument(res))
     }, [])
 
-    const initInstrument = async () => {
-        console.log(`Creating ${note}:${octave}.`)
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
-        loadAudio(getSoundFont(), {decode: decoder(), ready: () => {return null}}).then(buffers => {
-            setInstrument(window.SamplePlayer(getAudioContext(), buffers).connect(getAudioContext()?.destination))
-        });
 
-    }
-    const onClick = () => {
+    const onClick = async () => {
         if (instrument === undefined) {
-            initInstrument()
+            console.log(`Creating ${note}:${octave}.`)
+            setInstrument((await loadInstrument()));
         }
         instrument?.start(note.toUpperCase() + octave, undefined, {sustain: 3, decay: 2})
     }
@@ -33,7 +27,7 @@ export default function GenericKey({note, octave = 4, className, children}: {
     }
     return (
         <div>
-            <div className={cn(className, "select-none")} onMouseDownCapture={onClick} onMouseUp={onRelease}
+            <div className={cn(className, "select-none")} onMouseDown={onClick} onMouseUp={onRelease}
                  onMouseLeave={onRelease}>{children}</div>
         </div>
     )

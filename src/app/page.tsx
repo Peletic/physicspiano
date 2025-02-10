@@ -13,14 +13,15 @@ export default function Home() {
     return (
         <div
             className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-            <header className="font-bold text-2xl">
-                Test
+            <header className="font-bold text-2xl mx-auto flex-col">
+                <p className={"font-bold text-2xl mx-auto text-center w-fit"}> Virtual Keyboard </p>
+                <p className={"font-light text-lg italic mx-auto text-center w-fit"}>(Sparkling Apple Cider Bottle ver.)</p>
             </header>
             <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
                 <div className={"grid grid-rows-1 grid-flow-col min-w-fit flex-nowrap mx-auto"}>
                     {...Array(octaves + 1).fill(fullOctave).flat().map((el, idx) => (
                         <Key key={`${idx}`} note={el} octave={4 - octaves/2 + Math.floor(idx/12)} className={"row-end-1"}/>))}
-                    <Key note={"c"} octave={octaves + 5} className={"row-end-1"}/>
+                    <Key note={"c"} octave={4 + octaves/2 + 1} className={"row-end-1"}/>
                 </div>
                 <div className={"flex flex-row items-center min-w-full justify-between mx-auto"}>
                     <Card className={"w-full sm:max-w-[40vw] md:max-w-[17vw] mx-2"}>
