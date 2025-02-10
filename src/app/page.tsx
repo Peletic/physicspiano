@@ -33,6 +33,32 @@ export default function Home() {
                                 More about this webpage&#39;s development.
                             </CardDescription>
                         </CardHeader>
+                        <CardContent>
+                            Just a few issues that I had:
+                            <ul>
+                                <li>
+                                    basing this off of a 2010 opensrc lib in the big 25
+                                </li>
+                                <li>
+                                    having to rewrite my own compiler
+                                </li>
+                                <li>
+                                    having to learn about audio enc/dec
+                                </li>
+                                <li>
+                                    in the modern day there is no good way to install of the needed deps
+                                </li>
+                                <li>
+                                    making my own sound font? it was ok once i got used to it but damn the ui to do it sucked
+                                </li>
+                                <li>
+                                    ruby :gilgamesh:
+                                </li>
+                                <li>
+                                    the person who decided to do Noteb instead of Note# for the std midi notation
+                                </li>
+                            </ul>
+                        </CardContent>
                     </Card>
                     <Card className={"w-full sm:max-w-[40vw] md:max-w-[17vw] mx-2"}>
                         <CardHeader>
