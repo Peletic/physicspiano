@@ -28,7 +28,7 @@ export default function GenericKey({note, octave = 4, className, children}: {
     return (
         <div>
             <div className={cn(className, "select-none")} onMouseDown={onClick} onMouseUp={onRelease}
-                 onMouseLeave={onRelease} onTouchStart={onClick} onTouchEnd={onRelease} onTouchCancel={onRelease}>{children}</div>
+                 onMouseLeave={onRelease} onTouchStart={onClick} onTouchEnd={onRelease} onTouchMove={onRelease}>{children}</div>
         </div>
     )
 }
