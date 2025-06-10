@@ -34,7 +34,7 @@ export default function Home() {
                             </CardDescription>
                         </CardHeader>
                         <CardContent>
-                            Praying for mobile compatibility.
+                            If the sound doesn&#39;t play, try waiting a second and pressing any key again.
                         </CardContent>
                     </Card>
                     <Card className={"w-full sm:max-w-[40vw] md:max-w-[17vw] mx-2"}>
