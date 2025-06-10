@@ -20,7 +20,7 @@ export default function Home() {
             <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
                 <div className={"grid grid-rows-1 grid-flow-col min-w-fit flex-nowrap mx-auto"}>
                     {...Array(octaves + 1).fill(fullOctave).flat().map((el, idx) => (
-                        <Key key={`${idx}`} note={el} octave={4 - octaves/2 + Math.floor(idx/12)} className={"row-end-1"}/>))}
+                        <Key key={`${el}${4 - octaves/2 + Math.floor(idx/12)}`} note={el} octave={4 - octaves/2 + Math.floor(idx/12)} className={"row-end-1"}/>))}
                     <Key note={"c"} octave={4 + octaves/2 + 1} className={"row-end-1"}/>
                 </div>
                 <div className={"flex flex-row items-center min-w-full justify-between mx-auto"}>
@@ -34,30 +34,7 @@ export default function Home() {
                             </CardDescription>
                         </CardHeader>
                         <CardContent>
-                            Just a few issues that I had:
-                            <ul>
-                                <li>
-                                    basing this off of a 2010 opensrc lib in the big 25
-                                </li>
-                                <li>
-                                    having to rewrite my own compiler
-                                </li>
-                                <li>
-                                    having to learn about audio enc/dec
-                                </li>
-                                <li>
-                                    in the modern day there is no good way to install of the needed deps
-                                </li>
-                                <li>
-                                    making my own sound font? it was ok once i got used to it but damn the ui to do it sucked
-                                </li>
-                                <li>
-                                    ruby :gilgamesh:
-                                </li>
-                                <li>
-                                    the person who decided to do Noteb instead of Note# for the std midi notation
-                                </li>
-                            </ul>
+                            Praying for mobile compatibility.
                         </CardContent>
                     </Card>
                     <Card className={"w-full sm:max-w-[40vw] md:max-w-[17vw] mx-2"}>
