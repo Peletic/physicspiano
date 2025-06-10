@@ -22,7 +22,11 @@ export default function GenericKey({note, octave = 4, className, children}: {
         }
         instrument?.start(note.toUpperCase() + octave, undefined, {sustain: 3, decay: 2})
     }
-    const onRelease = () => {
+    const onRelease = async () => {
+        if (instrument === undefined) {
+            console.log(`Creating ${note}:${octave}.`)
+            setInstrument((await loadInstrument()));
+        }
         instrument?.stop(getAudioContext()?.currentTime + 0.05)
     }
     return (
