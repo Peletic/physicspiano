@@ -2,11 +2,13 @@ import {ReactNode, useEffect, useState} from "react";
 import {cn} from "@/lib/utils";
 import {getAudioContext, loadInstrument} from "@/lib/audio";
 
-export default function GenericKey({note, octave = 4, className, children}: {
+// @ts-ignore
+export default function GenericKey({text, setText, note, octave = 4, className, children}: {
     note: string,
     octave: number,
     className: string,
-    children: ReactNode
+    children: ReactNode, setText: any,
+    text: any
 }) {
     const [instrument, setInstrument] = useState<any>();
     useEffect(() => {
@@ -21,6 +23,7 @@ export default function GenericKey({note, octave = 4, className, children}: {
             setInstrument((await loadInstrument()));
         }
         instrument?.start(note.toUpperCase() + octave, undefined, {sustain: 3, decay: 2})
+        setText(text + "onClick")
     }
     const onRelease = async () => {
         if (instrument === undefined) {
@@ -31,7 +34,8 @@ export default function GenericKey({note, octave = 4, className, children}: {
     return (
         <div>
             <div className={cn(className, "select-none touch-none")} onMouseDown={onClick} onMouseUp={onRelease}
-                 onMouseLeave={onRelease} onTouchStart={onClick} onTouchEnd={onRelease} onTouchMove={onRelease}>{children}</div>
+                 onMouseLeave={onRelease} onTouchStart={onClick} onTouchEnd={onRelease}
+                 onTouchMove={onRelease}>{children}</div>
         </div>
     )
 }

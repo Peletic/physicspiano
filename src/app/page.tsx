@@ -4,9 +4,11 @@ import Key from "@/components/Key";
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 import {Slider} from "@/components/ui/slider";
 import {useEffect, useState} from "react";
+import DebugConsole from "@/components/DebugConsole";
 
 export default function Home() {
     const [octaves, setOctaves] = useState<number>(0)
+    const [text, setText] = useState<string>("")
     useEffect(() => {
         console.log(octaves)
     }, [octaves])
@@ -20,8 +22,8 @@ export default function Home() {
             <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
                 <div className={"grid grid-rows-1 grid-flow-col min-w-fit flex-nowrap mx-auto"}>
                     {...Array(octaves + 1).fill(fullOctave).flat().map((el, idx) => (
-                        <Key key={`${el}${4 - octaves/2 + Math.floor(idx/12)}`} note={el} octave={4 - octaves/2 + Math.floor(idx/12)} className={"row-end-1"}/>))}
-                    <Key note={"c"} octave={4 + octaves/2 + 1} className={"row-end-1"}/>
+                        <Key text={text} setText={setText} key={`${el}${4 - octaves/2 + Math.floor(idx/12)}`} note={el} octave={4 - octaves/2 + Math.floor(idx/12)} className={"row-end-1"}/>))}
+                    <Key text={text} setText={setText} note={"c"} octave={4 + octaves/2 + 1} className={"row-end-1"}/>
                 </div>
                 <div className={"flex flex-row items-center min-w-full justify-between mx-auto"}>
                     <Card className={"w-full sm:max-w-[40vw] md:max-w-[17vw] mx-2"}>
@@ -51,6 +53,9 @@ export default function Home() {
                         </CardContent>
                     </Card>
                 </div>
+
+                <DebugConsole text={text}>
+                </DebugConsole>
             </main>
         </div>
     );
