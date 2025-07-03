@@ -36,7 +36,7 @@ export default function Home() {
                             </CardDescription>
                         </CardHeader>
                         <CardContent>
-                            If the sound doesn&#39;t play, try waiting a second and pressing any key again.
+                            If the sound doesn&#39;t play, try waiting a second and pressing any key again. Debug v2
                         </CardContent>
                     </Card>
                     <Card className={"w-full sm:max-w-[40vw] md:max-w-[17vw] mx-2"}>

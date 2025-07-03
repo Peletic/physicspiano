@@ -33,9 +33,11 @@ export default function GenericKey({text, setText, note, octave = 4, className, 
     }
     return (
         <div>
-            <div className={cn(className, "select-none touch-none")} onMouseDown={onClick} onMouseUp={onRelease}
-                 onMouseLeave={onRelease} onTouchStart={onClick} onTouchEnd={onRelease}
-                 onTouchMove={onRelease}>{children}</div>
+            <div className={cn(className, "select-none touch-none")}
+                 onMouseDown={onClick} onMouseUp={onRelease} onMouseLeave={onRelease}
+                 onTouchStart={onClick} onTouchEnd={onRelease} onTouchMove={onRelease}
+                 onTouchStartCapture={onClick} onTouchEndCapture={onRelease} onTouchMoveCapture={onRelease}
+            >{children}</div>
         </div>
     )
 }
