@@ -34,7 +34,7 @@ export default function GenericKey({text, setText, note, octave = 4, className, 
     }
     return (
         <div>
-            <button className={cn(className, "select-none active:bg-blue-400")}
+            <button className={cn(className, "select-none active:bg-blue-400 cursor-pointer")}
                  onMouseDown={onClick} onMouseUp={onRelease} onMouseLeave={onRelease}
                  onTouchStart={onClick} onTouchEnd={onRelease} onTouchMove={onRelease}
                  onTouchStartCapture={onClick} onTouchEndCapture={onRelease} onTouchMoveCapture={onRelease}
