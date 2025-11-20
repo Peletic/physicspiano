@@ -1,4 +1,4 @@
-import {ReactNode, useEffect, useState} from "react";
+import { useEffect, useState} from "react";
 import {cn} from "@/lib/utils";
 import {getAudioContext, loadInstrument} from "@/lib/audio";
 
@@ -7,7 +7,8 @@ export default function GenericKey({text, setText, note, octave = 4, className, 
     note: string,
     octave: number,
     className: string,
-    children: ReactNode, setText: any,
+    children: string,
+    setText: any,
     text: any
 }) {
     const [instrument, setInstrument] = useState<any>();
@@ -33,11 +34,11 @@ export default function GenericKey({text, setText, note, octave = 4, className, 
     }
     return (
         <div>
-            <button className={cn(className, "select-none touch-none")}
+            <button className={cn(className, "select-none active:bg-blue-400")}
                  onMouseDown={onClick} onMouseUp={onRelease} onMouseLeave={onRelease}
                  onTouchStart={onClick} onTouchEnd={onRelease} onTouchMove={onRelease}
                  onTouchStartCapture={onClick} onTouchEndCapture={onRelease} onTouchMoveCapture={onRelease}
-            >{children}</button>
+            >{`${children}`}</button>
         </div>
     )
 }
