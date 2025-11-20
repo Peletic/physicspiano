@@ -4,6 +4,7 @@ import Key from "@/components/Key";
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 import {Slider} from "@/components/ui/slider";
 import {useEffect, useState} from "react";
+import DebugConsole from "@/components/DebugConsole";
 
 
 export default function Home() {
@@ -49,6 +50,8 @@ export default function Home() {
                         <CardContent className={"w-full"}>
                             <Slider title={"Keys"} defaultValue={[0]} max={6} step={2} className={"w-full"} onValueChange={async (val) => {setOctaves(val[0])}}/>
                         </CardContent>
+
+                        <DebugConsole text={text}/>
                     </Card>
                 </div>
 
