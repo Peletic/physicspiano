@@ -50,7 +50,7 @@ export default function Home() {
                         <CardContent className={"w-full"}>
                             <Slider title={"Keys"} defaultValue={[0]} max={6} step={2} className={"w-full"} onValueChange={async (val) => {setOctaves(val[0])}}/>
                         </CardContent>
-                        <button onTouchStart={() => setText("touch")} onClick={() => setText("click")}/>
+                        <button className={"cursor-pointer"} onTouchStart={() => setText("touch")} onClick={() => setText("click")}/>
                         <DebugConsole text={text}/>
                     </Card>
                 </div>
