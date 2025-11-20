@@ -109,15 +109,14 @@ const soundfont = {
 }
 
 export async function loadInstrument() {
-    if (instrument === null) {
-        // @ts-ignore
-        instrument = window.SamplePlayer(getAudioContext(), (await loadAudio(getSoundFont(), {
-            decode: decoder(),
-            ready: () => {
-                return null
-            }
-        }))).connect(getAudioContext()?.destination)
-    }
+    // @ts-ignore
+    instrument = window.SamplePlayer(getAudioContext(), (await loadAudio(getSoundFont(), {
+        decode: decoder(),
+        ready: () => {
+            return null
+        }
+    }))).connect(getAudioContext()?.destination)
+
     return instrument
 }
 
