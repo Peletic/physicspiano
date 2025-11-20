@@ -19,12 +19,12 @@ export default function GenericKey({text, setText, note, octave = 4, className, 
 
 
     const onClick = async () => {
+        setText(text + "onClick")
         if (instrument === undefined) {
-            console.log(`Creating ${note}:${octave}.`)
+            setText(text + `Creating ${note}:${octave}.`)
             setInstrument((await loadInstrument()));
         }
         instrument?.start(note.toUpperCase() + octave, undefined, {sustain: 3, decay: 2})
-        setText(text + "onClick")
     }
     const onRelease = async () => {
         if (instrument === undefined) {
@@ -36,8 +36,7 @@ export default function GenericKey({text, setText, note, octave = 4, className, 
         <div>
             <button className={cn(className, "select-none active:bg-blue-400 cursor-pointer")}
                  onMouseDown={onClick} onMouseUp={onRelease} onMouseLeave={onRelease}
-                 onTouchStart={onClick} onTouchEnd={onRelease} onTouchMove={onRelease}
-                 onTouchStartCapture={onClick} onTouchEndCapture={onRelease} onTouchMoveCapture={onRelease}
+                 onTouchStart={onClick} onTouchEnd={onRelease}
             >{`${children}`}</button>
         </div>
     )
