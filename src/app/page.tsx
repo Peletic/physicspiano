@@ -17,7 +17,7 @@ export default function Home() {
             className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
             <header className="font-bold text-2xl mx-auto flex-col">
                 <p className={"font-bold text-2xl mx-auto text-center w-fit"}> Virtual Keyboard </p>
-                <p className={"font-light text-lg italic mx-auto text-center w-fit"}>(Sparkling Apple Cider Bottle ver.)</p>
+                <p className={"font-light text-lg italic mx-auto text-center w-fit"}>(Apple Cider Bottle)</p>
             </header>
             <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
                 <div className={"grid grid-rows-1 grid-flow-col min-w-fit flex-nowrap mx-auto"}>
@@ -26,7 +26,7 @@ export default function Home() {
                     <Key text={text} setText={setText} note={"c"} octave={4 + octaves/2 + 1} className={"row-end-1"}/>
                 </div>
                 <div className={"flex flex-row items-center min-w-full justify-between mx-auto"}>
-                    <Card className={"w-full sm:max-w-[40vw] md:max-w-[17vw] mx-2"}>
+                    {/*<Card className={"w-full sm:max-w-[40vw] md:max-w-[17vw] mx-2"}>
                         <CardHeader>
                             <CardTitle>
                                 About
@@ -35,11 +35,9 @@ export default function Home() {
                                 More about this webpage&#39;s development.
                             </CardDescription>
                         </CardHeader>
-                        <CardContent>
-                            If the sound doesn&#39;t play, try waiting a second and pressing any key again. Debug v2
-                        </CardContent>
-                    </Card>
-                    <Card className={"w-full sm:max-w-[40vw] md:max-w-[17vw] mx-2"}>
+
+                    </Card>*/}
+                    <Card className={"w-full md:max-w-[17vw] mx-auto"}>
                         <CardHeader>
                             <CardTitle className={"w-full"}>
                                 Octaves
@@ -54,8 +52,6 @@ export default function Home() {
                     </Card>
                 </div>
 
-                <DebugConsole text={text}>
-                </DebugConsole>
             </main>
         </div>
     );
