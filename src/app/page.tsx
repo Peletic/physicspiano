@@ -4,7 +4,7 @@ import Key from "@/components/Key";
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 import {Slider} from "@/components/ui/slider";
 import {useEffect, useState} from "react";
-import DebugConsole from "@/components/DebugConsole";
+
 
 export default function Home() {
     const [octaves, setOctaves] = useState<number>(0)
